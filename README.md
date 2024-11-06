@@ -19,6 +19,13 @@ Kindly follow the following Instructions to run the project in your system and i
 - ``` $ npm start ```
 - start the app on http://localhost:3000
 - give the permission to metamask for connecting with localhost/polygon_amoy
+```
+ npm install
+ npx hardhat node
+ npx hardhat run scripts/deploy.js --network localhost
+ npm run dev
+ npm start
+```
 
 ## Working of Application
 ### Stakeholders

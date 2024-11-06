@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/abhinay/4.1/blockchain/Prime-Minister-Voting-Dapp/Prime-Minister-Voting-Dapp/voting-dapp/contracts/VotingOrganization.sol": {
+    "/home/abhinay/4.1/blockchain/z-voting-dapp/z-voting-dapp/voting-dapp/contracts/VotingOrganization.sol": {
       "lastModificationDate": 1730697460612,
       "contentHash": "be52f00c56cf29b260e3cf4a81b0a2e9",
       "sourceName": "contracts/VotingOrganization.sol",
