@@ -1,101 +1,136 @@
-# ZKP based decentralised voting system | Solidity, Next.js, Hardhat,zkSNARK
+# ZKP-Based Decentralized Voting System | Solidity, Next.js, Hardhat, zkSNARK, Semaphore Library
 
+## Overview
 
-## Instruction to run 
+This project implements a decentralized voting system with zero-knowledge proofs (ZKP) for voter privacy. We used Solidity for smart contract development, Hardhat for deployment, and Next.js for the frontend. The Semaphore library was also partially integrated to implement ZKP functionality for enhanced privacy.
 
-Kindly follow the following Instructions to run the project in your system and install the necessary requirements
-- open the project in any ide eg. VS code
-- delete the folders if present - "artifacts","cache","node_modules"
-- before running make sure you are using node v18(hardhat doesn't support latest version)
-- ```$ npm install```
-- ``` $ npx hardhat node ``` (you will get all local host addresses, `do not close` this terminal)-open other terminal and follow furthur instruction
-- if you want to run on polygon_amoy
-  ```$ npx hardhat run scripts/deploy.js --network polygon_amoy```
-  if you want to run on local host\
-  ```$ npx hardhat run scripts/deploy.js --network localhost```
-- now drag and drop the abi file of smart contract(VotingOrganization.json) form "artifacts" to "context" folder(if already present the replace that)
-- ``` $ npm run dev```
-- make sure before starting app on browser , Metamask should be installed (no need to setup or connect with any network eg.localhost,polygon_amoy - there is automated code to do that)
-- ``` $ npm start ```
-- start the app on http://localhost:3000
-- give the permission to metamask for connecting with localhost/polygon_amoy
-```
- npm install
- npx hardhat node
- npx hardhat run scripts/deploy.js --network localhost
- npm run dev
- npm start
-```
+Due to certain dependencies, we couldn't fully integrate Semaphore-based ZKP in the current version. However, we added the `votingSema.sol` file containing the ZKP-based contract code, which is ready for further integration.
 
-## Working of Application
+## Instructions to Run
+
+Follow these steps to set up and run the project on your local system:
+
+1. **Open Project**: Open the project in an IDE (e.g., VS Code).
+2. **Clean Setup**: Delete folders, if present: `artifacts`, `cache`, `node_modules`.
+3. **Node Version**: Ensure you’re using Node v18 (Hardhat does not support the latest versions).
+4. **Install Dependencies**:
+    
+    ```bash
+    bash
+    Copy code
+    $ npm install
+    
+    ```
+    
+5. **Run Hardhat Node**:
+    - Run the local Hardhat node in one terminal:
+        
+        ```bash
+        bash
+        Copy code
+        $ npx hardhat node
+        
+        ```
+        
+    - This will provide localhost addresses. Do not close this terminal.
+6. **Deploy the Contract**:
+    - For deployment on Polygon's `polygon_amoy` network:
+        
+        ```bash
+        bash
+        Copy code
+        $ npx hardhat run scripts/deploy.js --network polygon_amoy
+        
+        ```
+        
+    - For localhost:
+        
+        ```bash
+        bash
+        Copy code
+        $ npx hardhat run scripts/deploy.js --network localhost
+        
+        ```
+        
+7. **Update ABI**: Drag and drop the ABI file (`VotingOrganization.json`) from `artifacts` to the `context` folder (replace if already present).
+8. **Start the Frontend**:
+    - Ensure MetaMask is installed (no manual network setup is needed).
+    - Run the development server:
+        
+        ```bash
+        bash
+        Copy code
+        $ npm run dev
+        
+        ```
+        
+    - Start the app:
+        
+        ```bash
+        bash
+        Copy code
+        $ npm start
+        
+        ```
+        
+    - Access the app on [http://localhost:3000](http://localhost:3000/) and grant MetaMask permission to connect.
+
+## Working of the Application
+
 ### Stakeholders
-#### Owner 
-- `Create Election` by setting start_time and end_time of election
-  - Only after start_time approved voter can vote for approved candidates
-  - Resuls of election announced only after end_time of election
-  - No one can see who gets how many votes before end_time
-- can also `register as Voter`
-- can also `register as Candidate`
-- He/she has to `approve voter/candidate` based on submitted document/information
-  - Every approved voters/candidates can see the information/document submitted by other approved voters/candidates
-- He/She can also `reject the voter/candidate`
-  - Voter/Candidate can `reRegister with updated document/information`
-- He/She can `transfer the ownership` to other
 
-### Voter
-- registered as voter
-- After approval from owner can vote for any one candidate within voting period
-- can see the all voter/candidates registered
-- can see the result after end_time of election
-### Candidate
-- registered as candidate
-- can register as voter
-- After approval of voter criteria from owner can vote for any one candidate within voting period(includin himself)
-- can see the all voter/candidates registered
-- can see the result after end_time of election
+1. **Owner**:
+    - Creates elections with start and end times.
+    - Approves or rejects voters and candidates based on submitted documents.
+    - Announces election results only after the end time.
+    - Transfers ownership if needed.
+2. **Voter**:
+    - Registers and awaits owner approval.
+    - Votes during the voting period.
+    - Views registered voters and candidates.
+3. **Candidate**:
+    - Registers as a candidate (can also register as a voter).
+    - Views election results post-election period.
 
-## PInata IPFS JSON DATA UPLOAD
-- Create account on pinata and replace the pinata_api_key and pinata_secret_api_key
+### Semaphore Library and `votingSema.sol` Contract
+
+- **Semaphore Integration**: We incorporated the Semaphore library, which is widely used for ZKP-based privacy in Ethereum-based applications. The `votingSema.sol` file includes the modified contract using Semaphore functions for ZKP.
+- **Functionality**: Semaphore allows users to prove eligibility without revealing identities. It leverages group membership and generates zero-knowledge proofs for anonymous voting.
+- **Current Limitations**: Full integration is pending due to dependency issues in the current Hardhat setup.
+
+## Pinata IPFS Setup
+
+To store JSON data and images, configure Pinata with the following:
+
+- Create an account on [Pinata](https://www.pinata.cloud/) and replace the `pinata_api_key` and `pinata_secret_api_key` as needed in the code.
+
 ```
-https://www.pinata.cloud/
- headers: {
-            pinata_api_key: `YOUR_API_KEY`,
-            pinata_secret_api_key: `YOUR_SECRECT_KEY`,
-             "Content-Type": "application/json",
-          },
-```
-## PInata IPFS IMAGE UPLOAD
+// For JSON Data Upload
+headers: {
+    pinata_api_key: `YOUR_API_KEY`,
+    pinata_secret_api_key: `YOUR_SECRET_KEY`,
+    "Content-Type": "application/json",
+}
 
-```https://www.pinata.cloud/
- headers: {
-            pinata_api_key: `YOUR_API_KEY`,
-            pinata_secret_api_key: `YOUR_SECRECT_KEY`,
-            "Content-Type": "multipart/form-data",
-          },
+// For Image Upload
+headers: {
+    pinata_api_key: `YOUR_API_KEY`,
+    pinata_secret_api_key: `YOUR_SECRET_KEY`,
+    "Content-Type": "multipart/form-data",
+}
+
 ```
 
-#### NodeJs & NPM Version
+## Node.js & NPM Versions
 
-```https://nodejs.org/en/download
-  NodeJs: v18.6.2 
-  NPM: 10.5.0
-```
+- Node.js: v18.6.2
+- NPM: 10.5.0
 
-#### Test Faucets
+## Test Faucets
 
-Alchemy will provide you with some free test faucets which you can transfer to your wallet address for deploying the contract
-
-```https://faucet.polygon.technology/
-  Get: Free Test Faucets
-```
-
-#### Polygon Amoy
-
-```https://www.oklink.com/amoy
-  OPEN: Polygon Amoy
-```
+Use [Alchemy](https://alchemy.com/) to obtain free test faucets for deploying on test networks.
 
 ## Authors
 
-- `Abhinay Maurya[2021101132]`
-- `Rohan Rathee[2022101128]`
+- Abhinay Maurya [2021101132]
+- Rohan Rathee [2022101128]
