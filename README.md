@@ -16,50 +16,52 @@ Follow these steps to set up and run the project on your local system:
 4. **Install Dependencies**:
     
     ```bash
-    bash
-    Copy code
     $ npm install
     
     ```
-    
-5. **Run Hardhat Node**:
+5. **Set the .env file**:
+    - create .env file in you project directory(this is require in constant.js file)
+        ```bash
+        # .env
+
+        # MetaMask Private Key (without '0x' prefix for compatibility)
+        PRIVATE_KEY = your metamask private key
+
+        # Alchemy API Key
+        ALCHEMY_API_KEY = alchemy API key
+
+        ```
+
+5. **Run Hardhat Node(only when you are deploying on local blockchain)**:
     - Run the local Hardhat node in one terminal:
         
         ```bash
-        bash
-        Copy code
         $ npx hardhat node
         
         ```
         
     - This will provide localhost addresses. Do not close this terminal.
 6. **Deploy the Contract**:
-    - For deployment on Polygon's `polygon_amoy` network:
+    - For deployment on Polygon's `sepolia` network:
         
         ```bash
-        bash
-        Copy code
-        $ npx hardhat run scripts/deploy.js --network polygon_amoy
+        $ npx hardhat run scripts/deploy.js --network sepolia
         
         ```
         
     - For localhost:
         
         ```bash
-        bash
-        Copy code
         $ npx hardhat run scripts/deploy.js --network localhost
         
         ```
-        
+    - copy the Contract address generated and replace/paste it in contex/constant.js file
 7. **Update ABI**: Drag and drop the ABI file (`VotingOrganization.json`) from `artifacts` to the `context` folder (replace if already present).
 8. **Start the Frontend**:
     - Ensure MetaMask is installed (no manual network setup is needed).
     - Run the development server:
         
         ```bash
-        bash
-        Copy code
         $ npm run dev
         
         ```
@@ -67,8 +69,6 @@ Follow these steps to set up and run the project on your local system:
     - Start the app:
         
         ```bash
-        bash
-        Copy code
         $ npm start
         
         ```

@@ -5,13 +5,23 @@ import axios from "axios";
 //IMPORT CONTRACT ABI
 import votingOrganization from "./VotingOrganization.json";
 
-export const OWNER_ADDRESS = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
-
-export const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+export const OWNER_ADDRESS = "0x37291701E6a6B44bC77F758e32183B2f4B7E08C4";
+export const CONTRACT_ADDRESS = "0xeeb9fec4a24661c3ef512Bc247625e1CE4fBf88b";
 export const CONTRACT_ABI = votingOrganization.abi;
 
 //NETWORK
 const networks = {
+  sepolia : {
+    chainId: `0x${Number(84532).toString(16)}`,
+    chainName: "Sepolia",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpcUrls: ["http://eth-sepolia.g.alchemy.com/v2/sdqpQyGd-eIQ5FTA7KtvAEF6gLNje0e1"],
+    blockExplorerUrls: ["https://etherscan.io/"],
+  },
   polygon_amoy: {
     chainId: `0x${Number(80002).toString(16)}`,
     chainName: "Polygon Amoy",
@@ -108,7 +118,7 @@ const changeNetwork = async ({ networkName }) => {
 };
 
 export const handleNetworkSwitch = async () => {
-  const networkName = "localhost";
+  const networkName = "sepolia"; 
   await changeNetwork({ networkName });
 };
 
