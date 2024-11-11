@@ -6,7 +6,9 @@ import axios from "axios";
 import votingOrganization from "./VotingOrganization.json";
 
 export const OWNER_ADDRESS = "0x37291701E6a6B44bC77F758e32183B2f4B7E08C4";
-export const CONTRACT_ADDRESS = "0xeeb9fec4a24661c3ef512Bc247625e1CE4fBf88b";
+export const CONTRACT_ADDRESS = "0xb4b2A4353867bB3c67aDc49Db9D013CdFFF99E70";
+// export const OWNER_ADDRESS = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+// export const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 export const CONTRACT_ABI = votingOrganization.abi;
 
 //NETWORK
@@ -118,7 +120,7 @@ const changeNetwork = async ({ networkName }) => {
 };
 
 export const handleNetworkSwitch = async () => {
-  const networkName = "sepolia"; 
+  const networkName = "loacalhost"; // change here to switch network
   await changeNetwork({ networkName });
 };
 

@@ -98,7 +98,7 @@ export const VOTER_DAPP_PROVIDER = ({ children }) => {
         url: "https://api.pinata.cloud/pinning/pinJSONToIPFS",
         data: data,
         headers: {
-          pinata_api_key: `3952e8af7bbcbae32d1d`,
+          pinata_api_key: `3952e8af7bbcbae32d1d`, 
           pinata_secret_api_key: `1a75b9b6372f6e215c0cdded6cce9966a8179fcc559dd6115dce28db8a7a0f59`,
           "Content-Type": "application/json",
         },

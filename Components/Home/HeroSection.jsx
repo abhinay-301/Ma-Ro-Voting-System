@@ -75,11 +75,11 @@ const HeroSection = ({ initialData, higest }) => {
           </div>
           <div class="col-sm-10 col-lg-6 col-xxl-5">
             <div class="hero-section__thumbs pb-xxl-10">
-              <img
+              {/* <img
                 src="assets/images/hero-image.png"
                 class="max-auto max-xxl-un"
                 alt="img"
-              />
+              /> */}
             </div>
           </div>
           <ul class="list_items col-12 d-flex row-gap-6 gap-lg-15 justify-content-between flex-wrap pt-2 pt-lg-15 pt-xl-2 pt-xxl-15 pb-15">
